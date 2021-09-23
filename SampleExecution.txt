@@ -1,0 +1,267 @@
+➜  ETScratchOrgsStarter copy git:(master) ✗ ./orgInit_pre.sh
+Variables
+DH: dh100
+SO: soTestBasic
+Tue Aug  3 12:13:34 EDT 2021
+sfdx force:org:create
+{
+  "status": 0,
+  "result": {
+    "orgId": "00DJ0000003iRROMA2",
+    "username": "test-ewqri9un7xp3@example.com"
+  }
+}
+Tue Aug  3 12:14:03 EDT 2021 [FINSIHED ON 29 seconds]
+sfdx force:source:push
+{
+  "status": 0,
+  "result": {
+    "pushedSource": [
+      {
+        "state": "Add",
+        "fullName": "LWC_Demo",
+        "type": "CustomApplication",
+        "filePath": "force-apps/deploy/main/default/applications/LWC_Demo.app-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "TestClass",
+        "type": "ApexClass",
+        "filePath": "force-apps/deploy/main/default/classes/TestClass.cls"
+      },
+      {
+        "state": "Add",
+        "fullName": "TestClass",
+        "type": "ApexClass",
+        "filePath": "force-apps/deploy/main/default/classes/TestClass.cls-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "Counter",
+        "type": "FlexiPage",
+        "filePath": "force-apps/deploy/main/default/flexipages/Counter.flexipage-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "LWC_Demo_UtilityBar",
+        "type": "FlexiPage",
+        "filePath": "force-apps/deploy/main/default/flexipages/LWC_Demo_UtilityBar.flexipage-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "demoCounter/demoCounter.html",
+        "type": "LightningComponentBundle",
+        "filePath": "force-apps/deploy/main/default/lwc/demoCounter/demoCounter.html"
+      },
+      {
+        "state": "Add",
+        "fullName": "demoCounter/demoCounter.js",
+        "type": "LightningComponentBundle",
+        "filePath": "force-apps/deploy/main/default/lwc/demoCounter/demoCounter.js"
+      },
+      {
+        "state": "Add",
+        "fullName": "demoCounter/demoCounter.js",
+        "type": "LightningComponentBundle",
+        "filePath": "force-apps/deploy/main/default/lwc/demoCounter/demoCounter.js-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "psTest",
+        "type": "PermissionSet",
+        "filePath": "force-apps/deploy/main/default/permissionsets/psTest.permissionset-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "Counter",
+        "type": "CustomTab",
+        "filePath": "force-apps/deploy/main/default/tabs/Counter.tab-meta.xml"
+      },
+      {
+        "state": "Add",
+        "fullName": "Admin",
+        "type": "Profile",
+        "filePath": "force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml"
+      }
+    ]
+  }
+}
+Tue Aug  3 12:14:19 EDT 2021 [FINSIHED ON 16 seconds]
+sfdx force:apex:execute
+{
+  "status": 0,
+  "result": {
+    "success": true,
+    "compiled": true,
+    "compileProblem": "",
+    "exceptionMessage": "",
+    "exceptionStackTrace": "",
+    "line": -1,
+    "column": -1,
+    "logs": "52.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO\nExecute Anonymous: // sfdx force:apex:execute -f ./@ELTOROIT/scripts/apex/SetUserRecord.apex\nExecute Anonymous: \nExecute Anonymous: // Find me\nExecute Anonymous: User me = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];\nExecute Anonymous: \nExecute Anonymous: // Enable debug mode for the default scratch org user\nExecute Anonymous: me.UserPreferencesUserDebugModePref = true;\nExecute Anonymous: update me;\n09:14:24.47 (47858771)|USER_INFO|[EXTERNAL]|005J000000CDoIM|test-ewqri9un7xp3@example.com|(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)|GMT-07:00\n09:14:24.47 (47895918)|EXECUTION_STARTED\n09:14:24.47 (47905634)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex\n09:14:24.284 (284864301)|CUMULATIVE_LIMIT_USAGE\n09:14:24.284 (284864301)|LIMIT_USAGE_FOR_NS|(default)|\n  Number of SOQL queries: 1 out of 100\n  Number of query rows: 1 out of 50000\n  Number of SOSL queries: 0 out of 20\n  Number of DML statements: 1 out of 150\n  Number of Publish Immediate DML: 0 out of 150\n  Number of DML rows: 1 out of 10000\n  Maximum CPU time: 0 out of 10000\n  Maximum heap size: 0 out of 6000000\n  Number of callouts: 0 out of 100\n  Number of Email Invocations: 0 out of 10\n  Number of future calls: 0 out of 50\n  Number of queueable jobs added to the queue: 0 out of 50\n  Number of Mobile Apex push calls: 0 out of 10\n\n09:14:24.284 (284864301)|CUMULATIVE_LIMIT_USAGE_END\n\n09:14:24.47 (284951610)|CODE_UNIT_FINISHED|execute_anonymous_apex\n09:14:24.47 (284988717)|EXECUTION_FINISHED\n"
+  }
+}
+Tue Aug  3 12:14:24 EDT 2021 [FINSIHED ON 5 seconds]
+sfdx force:user:permset:assign
+{
+  "status": 0,
+  "result": {
+    "successes": [
+      {
+        "name": "test-ewqri9un7xp3@example.com",
+        "value": "psTest"
+      }
+    ],
+    "failures": []
+  }
+}
+Tue Aug  3 12:14:31 EDT 2021 [FINSIHED ON 7 seconds]
+sfdx force:source:deploy
+{
+  "status": 0,
+  "result": {
+    "deployedSource": [
+      {
+        "state": "Add",
+        "fullName": "Admin",
+        "type": "Profile",
+        "filePath": "force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml"
+      }
+    ]
+  }
+}
+Tue Aug  3 12:14:38 EDT 2021 [FINSIHED ON 7 seconds]
+sfdx ETCopyData:import
+{
+  "status": 0,
+  "result": {
+    "soTestBasic": {
+      "Account": {
+        "bad": 0,
+        "good": 12
+      },
+      "Campaign": {
+        "bad": 0,
+        "good": 4
+      },
+      "Lead": {
+        "bad": 0,
+        "good": 22
+      },
+      "Contact": {
+        "bad": 0,
+        "good": 20
+      },
+      "Case": {
+        "bad": 0,
+        "good": 26
+      },
+      "Opportunity": {
+        "bad": 0,
+        "good": 31
+      }
+    },
+    "_TOTAL_RECORDS": {
+      "bad": 0,
+      "good": 115
+    }
+  }
+}
+Tue Aug  3 12:15:01 EDT 2021 [FINSIHED ON 23 seconds]
+sfdx force:apex:test:run
+{
+  "status": 0,
+  "result": {
+    "summary": {
+      "outcome": "Passed",
+      "testsRan": 2,
+      "passing": 2,
+      "failing": 0,
+      "skipped": 0,
+      "passRate": "100%",
+      "failRate": "0%",
+      "testStartTime": "Tue Aug 03 2021 12:15:06 PM",
+      "testExecutionTime": "23 ms",
+      "testTotalTime": "23 ms",
+      "commandTime": "317 ms",
+      "hostname": "https://connect-platform-7604-dev-ed.cs10.my.salesforce.com/",
+      "orgId": "00DJ0000003iRROMA2",
+      "username": "test-ewqri9un7xp3@example.com",
+      "testRunId": "707J000001nV3xD",
+      "userId": "005J000000CDoIMIA1",
+      "testRunCoverage": "0%",
+      "orgWideCoverage": "0%"
+    },
+    "tests": [
+      {
+        "Id": "07MJ000000HP072MAD",
+        "QueueItemId": "709J0000002C9XxIAK",
+        "StackTrace": null,
+        "Message": null,
+        "AsyncApexJobId": "707J000001nV3xDIAS",
+        "MethodName": "Test01",
+        "Outcome": "Pass",
+        "ApexClass": {
+          "Id": "01pJ000000HWFH7IAP",
+          "Name": "TestClass",
+          "NamespacePrefix": null
+        },
+        "RunTime": 12,
+        "FullName": "TestClass.Test01"
+      },
+      {
+        "Id": "07MJ000000HP073MAD",
+        "QueueItemId": "709J0000002C9XxIAK",
+        "StackTrace": null,
+        "Message": null,
+        "AsyncApexJobId": "707J000001nV3xDIAS",
+        "MethodName": "Test02",
+        "Outcome": "Pass",
+        "ApexClass": {
+          "Id": "01pJ000000HWFH7IAP",
+          "Name": "TestClass",
+          "NamespacePrefix": null
+        },
+        "RunTime": 11,
+        "FullName": "TestClass.Test02"
+      }
+    ],
+    "coverage": {
+      "coverage": [],
+      "records": [],
+      "summary": {
+        "totalLines": 0,
+        "coveredLines": 0,
+        "orgWideCoverage": "0%",
+        "testRunCoverage": "0%"
+      }
+    }
+  }
+}
+Tue Aug  3 12:15:09 EDT 2021 [FINSIHED ON 8 seconds]
+sfdx force:user:password:generate
+{
+  "status": 0,
+  "result": {
+    "username": "test-ewqri9un7xp3@example.com",
+    "password": "E^5g|6jNGU8jg"
+  }
+}
+Tue Aug  3 12:15:14 EDT 2021 [FINSIHED ON 5 seconds]
+sfdx force:user:display
+{
+  "status": 0,
+  "result": {
+    "accessToken": "00DJ0000003iRRO!ARMAQIEJq4av3G1fbnV85xk6G6pJup1vI3MSh3_sMH1T7XLMKB11yv4s9lX.lCOszIyh.f38KwDMD4N49oQZOBmQer5PQvXD",
+    "id": "005J000000CDoIMIA1",
+    "instanceUrl": "https://connect-platform-7604-dev-ed.cs10.my.salesforce.com/",
+    "loginUrl": "https://CS10.salesforce.com",
+    "orgId": "00DJ0000003iRROMA2",
+    "profileName": "System Administrator",
+    "username": "test-ewqri9un7xp3@example.com",
+    "alias": "soTestBasic",
+    "password": "E^5g|6jNGU8jg"
+  }
+}
+Tue Aug  3 12:15:20 EDT 2021 [FINSIHED ON 6 seconds]
+➜  ETScratchOrgsStarter copy git:(master) ✗ 
